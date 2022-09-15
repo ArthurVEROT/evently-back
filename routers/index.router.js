@@ -4,7 +4,7 @@ router.get(`/`, (req, res, next) => {
   try {
     res.status(200).json({
       message: `Welcome to Evently 😁`,
-      apiGithubRepo: `https://github.com/haroun-b/evently`,
+      apiGithubRepo: `https://github.com/ArthurVEROT/evently-api`,
     });
   } catch (err) {
     next(err);
@@ -25,6 +25,5 @@ router.use("/messages", require("./messages.router"));
 router.use(`/me`, require(`./currentUser.router`));
 
 router.use("/users", require("./users.router"));
-
 
 module.exports = router;

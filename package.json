@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/haroun-b/evently-api.git"
+    "url": "git+https://github.com/ArthurVEROT/evently-api.git"
   },
   "author": "Arthur V. | Haroun B.",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/haroun-b/evently-api/issues"
+    "url": "https://github.com/ArthurVEROT/evently-api/issues"
   },
-  "homepage": "https://github.com/haroun-b/evently-api#readme",
+  "homepage": "https://github.com/ArthurVEROT/evently-api#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.30.0",
