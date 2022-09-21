@@ -19,7 +19,6 @@ async function auth(req, res, next) {
         req.user = foundUser;
       }
     }
-
     next();
   } catch (err) {
     next(err);

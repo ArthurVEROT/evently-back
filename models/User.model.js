@@ -53,7 +53,7 @@ const userSchema = new Schema(
     badges: [{ type: Schema.Types.ObjectId, ref: "Badge" }],
     isVerified: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   {

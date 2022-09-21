@@ -13,9 +13,7 @@ router.get(`/`, (req, res, next) => {
 
 // You put the next routes here 👇
 // example: router.use("/auth", authRoutes)
-router.use("/signup", require("./signup.router"));
-router.use("/login", require("./login.router"));
-router.use("/verify", require("./verifyEmail.router"));
+router.use("/auth", require("./auth.router"));
 router.use(`/reset-password`, require(`./resetPassword.router`));
 
 router.use("/events", require("./events.router"));
