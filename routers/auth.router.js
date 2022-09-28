@@ -2,19 +2,18 @@ const router = require(`express`).Router(),
   User = require(`../models/User.model`),
   bcrypt = require(`bcryptjs`),
   jwt = require(`jsonwebtoken`),
-  nodemailer = require(`nodemailer`)
+  nodemailer = require(`nodemailer`);
 
 const {
-    handleNotExist,
-    isValidPassword,
-    handleInvalidPassword,
-    handleImagePath,
-  } = require(`../utils/helpers.function`)
-  
+  handleNotExist,
+  isValidPassword,
+  handleInvalidPassword,
+  handleImagePath,
+} = require(`../utils/helpers.function`);
+
 const uploader = require("../config/cloudinary.config");
 
 const saltRounds = 10;
-
 
 //
 // Sign Up router
@@ -23,10 +22,11 @@ const saltRounds = 10;
 router.post("/signup", uploader.single("file"), async (req, res, next) => {
   try {
     const imageUrl = handleImagePath(req.file, "file");
-    const { username, email, password } = req.body;
+    const { email, username, password } = req.body;
 
     // Checking if email is an empty string
     if (!email) {
+      console.log("email empty");
       res.status(400).json({ message: "Email cannot be empty" });
       return;
     }
@@ -131,8 +131,7 @@ router.post(`/login`, async (req, res, next) => {
         expiresIn: `7d`,
       }
     );
-
-    res.status(200).json({ isLoggedIn: true, authToken });
+    res.status(200).json(authToken);
   } catch (err) {
     next(err);
   }
@@ -142,6 +141,7 @@ router.post(`/login`, async (req, res, next) => {
 // Verify router
 //
 router.get("/verify", async (req, res, next) => {
+  console.log("verify")
   // Get the bearer token from the header
   const { authorization } = req.headers;
   // extract the jwt
@@ -151,6 +151,7 @@ router.get("/verify", async (req, res, next) => {
     // verify the web token
     const playload = jwt.verify(token, process.env.TOKEN_SECRET);
     // send the user the payload
+    console.log('{ token, playload }', { token, playload })
     res.json({ token, playload });
 
     // if error, catch it and say token is invalid
@@ -212,6 +213,5 @@ router.get("/verify", async (req, res, next) => {
 //     next(err);
 //   }
 // });
-
 
 module.exports = router;
